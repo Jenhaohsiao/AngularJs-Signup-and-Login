@@ -1,0 +1,56 @@
+<div class="md-padding">
+    <div ng-if="!vm.UserObjService.getIsLogin()">
+
+        <div class="login-section-title">
+            <h1>Log In</h1>
+            <p>You don’t have an account? <span><a href="#!account/signup">Create an account</a></span> </p>
+        </div>
+
+        <div ng-form="vm.loginForm" class="login-section">
+
+            <div layout-gt-xs="row" flex>
+                <md-input-container class="md-block" flex>
+                    <label>Email</label>
+                    <input type="email" ng-model="vm.doc.email" aria-label="Email" name="email" ng-pattern="/^(([^<>()\[\]\.,;:\s@\”]+(\.[^<>()\[\]\.,;:\s@\”]+)*)|(\”.+\”))@(([^<>()[\]\.,;:\s@\”]+\.)+[^<>()[\]\.,;:\s@\”]{2,})$/i" required>
+
+                    <div ng-messages="vm.loginForm.email.$error" multiple md-auto-hide="false">
+                        <div ng-if="vm.loginForm.email.$touched" ng-message="required">This is required</div>
+                        <div ng-message="pattern">Invalid email format </div>
+                    </div>
+
+                </md-input-container>
+            </div>
+
+            <div layout="row" flex>
+                <md-input-container class="md-block" flex>
+                    <label>Password</label>
+                    <input type="{{vm.isPasswordVisible? 'text':'password'}}" ng-model="vm.doc.password" aria-label="password" name="password" required>
+
+                    <div ng-messages="vm.loginForm.password.$error" multiple md-auto-hide="false">
+                        <div ng-if="vm.loginForm.password.$touched" ng-message="required">This is required</div>
+                    </div>
+
+                </md-input-container>
+
+                <md-switch class="md-primary" md-no-ink aria-label="is Password Visible" ng-model="vm.isPasswordVisible">
+                    {{vm.isPasswordVisible? "Visible":"Hide"}}
+                </md-switch>
+            </div>
+
+
+            <div ng-if="vm.loginForm.$invalid" class="alert alert-info">
+                Please fill out your email and password for login
+            </div>
+
+            <div layout="row" layout-align="end center">
+                <md-button ng-click="vm.login()" ng-disabled="vm.loginForm.$invalid" class="md-raised md-primary">
+                    Log In
+                </md-button>
+
+            </div>
+        </div>
+    </div>
+    <div ng-if="vm.UserObjService.getIsLogin()">
+        <p>You login already</p>
+    </div>
+</div>

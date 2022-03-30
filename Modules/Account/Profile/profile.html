@@ -1,0 +1,11 @@
+<div class="md-padding">
+    <div ng-if="vm.UserObjService.getIsLogin()">
+        <h1>{{vm.title}}</h1>
+
+        <profile action="profile"></profile>
+    </div>
+    <div ng-if="!vm.UserObjService.getIsLogin()">
+        <p>Please <a href="#!account/login">log in</a> first</p>
+    </div>
+
+</div>

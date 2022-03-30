@@ -1,0 +1,204 @@
+<div class="md-padding">
+
+    <div ng-form="vm.profileForm" class="profile-section">
+
+        <div layout-gt-xs="row" layout-align="space-between center" flex>
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>First Name</label>
+                <input ng-model="vm.doc.firstName" ng-disabled="!vm.editable" name="firstName" ng-pattern="/^[a-zA-Z-.,' ]+$/" required>
+
+                <div ng-messages="vm.profileForm.firstName.$error" multiple md-auto-hide="false">
+                    <div ng-if="vm.profileForm.firstName.$touched" ng-message="required">This is required</div>
+                    <div ng-message="pattern">English Letters Only</div>
+                </div>
+
+            </md-input-container>
+
+            <div flex="5" hide-xs></div>
+
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>Last Name</label>
+                <input ng-model="vm.doc.lastName" ng-disabled="!vm.editable" aria-label="Last Name" name="lastName" ng-pattern="/^[a-zA-Z-.,' ]+$/" required>
+
+                <div ng-messages="vm.profileForm.lastName.$error" multiple md-auto-hide="false">
+                    <div ng-if="vm.profileForm.lastName.$touched" ng-message="required">This is required</div>
+                    <div ng-message="pattern">English Letters Only</div>
+                </div>
+
+            </md-input-container>
+        </div>
+
+        <div layout-gt-xs="row" flex>
+            <md-input-container class="md-block" flex>
+                <label>Address</label>
+                <input ng-model="vm.doc.address.lineOne" ng-disabled="!vm.editable" aria-label="address line one" name="addressLineOne" ng-pattern="/^[a-zA-Z0-9-.,' &]+$/" required>
+
+                <div ng-messages="vm.profileForm.addressLineOne.$error" multiple md-auto-hide="false">
+                    <div ng-if="vm.profileForm.addressLineOne.$touched" ng-message="required">This is required</div>
+                    <div ng-message="pattern">Number And English Letters Only</div>
+                </div>
+
+            </md-input-container>
+        </div>
+        <div layout-gt-xs="row" flex>
+            <md-input-container class="md-block" flex>
+                <label>Address Line 2</label>
+                <input ng-model="vm.doc.address.lineTwo" ng-disabled="!vm.editable" aria-label="address line two" ng-pattern="/^[a-zA-Z0-9-.,' &]+$/" name="addressLineTwo">
+
+                <div ng-messages="vm.profileForm.addressLineTwo.$error" multiple md-auto-hide="false">
+                    <div ng-message="pattern">Number And English Letters Only</div>
+                </div>
+
+            </md-input-container>
+        </div>
+
+        <div layout-gt-sm="row" layout-align="space-between center" flex>
+            <div layout-gt-xs="row" flex-gt-sm="100">
+                <md-input-container class="md-block" flex>
+                    <label>City/Town</label>
+                    <input ng-model="vm.doc.address.cityTown" ng-disabled="!vm.editable" aria-label="City" name="city" ng-pattern="/^[a-zA-Z-.,' &]+$/">
+
+                    <div ng-messages="vm.profileForm.city.$error" multiple md-auto-hide="false">
+                        <div ng-message="pattern">English Letters Only</div>
+                    </div>
+
+                </md-input-container>
+
+                <div flex="5" hide-xs></div>
+
+
+                <md-input-container class="md-block" flex>
+                    <label>State/Province</label>
+                    <input ng-model="vm.doc.address.stateProvince" ng-disabled="!vm.editable" aria-label="State/Province" name="stateProvince" ng-pattern="/^[a-zA-Z-.,' &]+$/">
+
+                    <div ng-messages="vm.profileForm.stateProvince.$error" multiple md-auto-hide="false">
+                        <div ng-message="pattern">English Letters Only</div>
+                    </div>
+
+                </md-input-container>
+            </div>
+
+            <div flex="5" hide-xs></div>
+
+            <div layout-gt-xs="row" flex-gt-sm="100">
+                <md-input-container class="md-block" flex>
+                    <label class="radio-title">Country</label>
+                    <md-radio-group ng-model="vm.doc.address.country" ng-disabled="!vm.editable" aria-label="Country" name="country" required>
+                        <div layout="row" flex>
+                            <md-radio-button value="canada"> <span class="md-radio-text">Canada</span></md-radio-button>
+                            <md-radio-button value="usa"> <span class="md-radio-text">US</span>
+                            </md-radio-button>
+                        </div>
+                    </md-radio-group>
+
+                    <div ng-messages="vm.profileForm.country.$error" multiple md-auto-hide="false">
+                        <div ng-if="vm.profileForm.country.$touched" ng-message="required">This is required</div>
+                    </div>
+
+                </md-input-container>
+
+                <div flex="5" hide-xs></div>
+
+                <md-input-container class="md-block" flex>
+                    <label>ZIP/Postal Code</label>
+                    <input ng-model="vm.doc.address.postalCode" ng-disabled="!vm.editable" aria-label="Postal Code" name="postalCode" ng-pattern="vm.postalPattern" required ng-cloak>
+                    <div ng-messages="vm.profileForm.postalCode.$error" multiple md-auto-hide="false">
+                        <div ng-if="vm.profileForm.postalCode.$touched" ng-message="required">This is required</div>
+                        <div ng-message="pattern">Invalid {{vm.doc.address.postalCode}} Zip/Postal format </div>
+                    </div>
+
+                </md-input-container>
+            </div>
+        </div>
+
+        <div layout-gt-xs="row" flex>
+            <md-input-container class="md-block" flex>
+                <label>Email</label>
+                <input type="email" ng-model="vm.doc.email" ng-disabled="!vm.editable" aria-label="e-Mail" name="email" ng-pattern="/^(([^<>()\[\]\.,;:\s@\”]+(\.[^<>()\[\]\.,;:\s@\”]+)*)|(\”.+\”))@(([^<>()[\]\.,;:\s@\”]+\.)+[^<>()[\]\.,;:\s@\”]{2,})$/i" required>
+
+                <div ng-messages="vm.profileForm.email.$error" multiple md-auto-hide="false">
+                    <div ng-if="vm.profileForm.email.$touched" ng-message="required">This is required</div>
+                    <div ng-message="pattern">Invalid Email Format </div>
+                </div>
+
+            </md-input-container>
+        </div>
+
+        <div layout-gt-sm="row" layout-align="space-between center" flex>
+            <md-input-container class="md-block" flex>
+                <label>Phone</label>
+                <input type="text" ng-model="vm.doc.phone" placeholder="412345678989" ng-disabled="!vm.editable" aria-label="Phone" name="phone" ng-pattern="/^\d{10}$/" required>
+
+                <div ng-messages="vm.profileForm.phone.$error" multiple md-auto-hide="false">
+                    <div ng-if="vm.profileForm.phone.$touched" ng-message="required">This is required</div>
+                    <div ng-message="type">Number Only</div>
+                    <div ng-message="pattern">Number Only and 10 digits long ('-' Not allowed)</div>
+                </div>
+
+            </md-input-container>
+
+            <div flex="5" hide-xs></div>
+
+            <md-input-container class="md-block" flex>
+                <label>Ext</label>
+                <input type="number" ng-model="vm.doc.phoneExt" ng-disabled="!vm.editable" aria-label="Phone Ext" min="0" name="phoneExt">
+
+                <div ng-messages="vm.profileForm.phoneExt.$error" multiple md-auto-hide="false">
+                    <div ng-message="type">Number Only</div>
+                    <div ng-message="min">Invalid Number</div>
+                </div>
+
+            </md-input-container>
+        </div>
+
+        <div ng-if="vm.editable" layout="row" flex>
+            <md-input-container class="md-block" flex>
+                <label>Password</label>
+                <input type="{{vm.isPasswordVisible? 'text':'password'}}" ng-model="vm.doc.password" placeholder="Least one number, uppercase, lowercase letter, and min length is 6" aria-label="password" name="password" minlength="6" ng-change="vm.passwordChanged()"
+                    ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/" required>
+
+                <div ng-messages="vm.profileForm.password.$error" multiple md-auto-hide="false">
+                    <div ng-if="vm.profileForm.password.$touched" ng-message="required">This is required</div>
+                    <div ng-message="minlength">Min length is 6</div>
+                    <div ng-message="pattern">Must contain at least one number and one uppercase and lowercase letter
+                    </div>
+                </div>
+
+            </md-input-container>
+
+            <md-switch class="md-primary" md-no-ink aria-label="is Password Visible" ng-model="vm.isPasswordVisible">
+                {{vm.isPasswordVisible? "Visible":"Hide"}}
+            </md-switch>
+        </div>
+
+        <div ng-if="vm.editable" layout="row" flex>
+            <md-input-container class="md-block" flex>
+                <label>Confirm Password</label>
+                <input type="{{vm.isConfirmPasswordVisible? 'text':'password'}}" ng-model="vm.confirmPassword" aria-label="Confirm Password" name="confirmPassword" ng-pattern="vm.passwordregExp" required>
+
+                <div ng-messages="vm.profileForm.confirmPassword.$error" multiple md-auto-hide="false">
+                    <div ng-if="vm.profileForm.confirmPassword.$touched" ng-message="required">This is required</div>
+                    <p ng-message="pattern">Colons not required!</p>
+                </div>
+
+            </md-input-container>
+
+            <md-switch class="md-primary" md-no-ink aria-label="is Password Visible" ng-model="vm.isConfirmPasswordVisible">
+                {{vm.isConfirmPasswordVisible? "Visible":"Hide"}}
+            </md-switch>
+        </div>
+
+        <div ng-if="vm.profileForm.$invalid" class="alert alert-warning">
+            Please fill out the required fields with valid info
+        </div>
+
+        <div layout="row" layout-align="end center">
+            <md-button ng-if="vm.editable" ng-click="vm.saveDoc()" ng-disabled="vm.profileForm.$invalid" class="md-raised md-primary">
+                Submit
+            </md-button>
+
+        </div>
+    </div>
+
+
+</div>

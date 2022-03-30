@@ -1,0 +1,70 @@
+md-input-container.md-block {
+    margin-bottom: 0;
+}
+
+.body-limit {
+    min-width: 400px;
+}
+
+.profile-section {
+    max-width: 1000px;
+    min-height: 500px;
+    margin: 15px auto 0;
+    padding: 20px;
+    background-color: rgba(225, 243, 247, 0.801);
+    border-radius: 15px;
+}
+
+.login-section-title {
+    width: 500px;
+    margin: 0 auto
+}
+
+.login-section {
+    max-width: 500px;
+    height: 60vh;
+    min-height: 500px;
+    margin: 50px auto 100px;
+    padding: 20px;
+    border: 2px solid rgb(228, 202, 118);
+    border-radius: 15px;
+}
+
+.radio-title {
+    margin-bottom: 28px;
+    font-size: 13px;
+}
+
+.md-radio-text {
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+.extra-info-text {
+    color: rgb(106, 106, 106)
+}
+
+.spinner-text {
+    margin: 50px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.image-container {
+    /* max-width: 80vw; */
+}
+
+.image-responsive {
+    height: auto;
+    max-width: 90vw;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.message-size {
+    font-size: 32px !important;
+    margin-right: 10px;
+}

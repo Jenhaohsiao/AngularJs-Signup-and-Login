@@ -1,0 +1,119 @@
+<!doctype html>
+<html ng-app="mainApp">
+
+
+<head>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+
+    <link rel="stylesheet"
+        href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.css">
+    <!-- Angular Material requires Angular.js Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-aria.min.js"></script>
+
+    <!-- Angular UI Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.6/ui-bootstrap-tpls.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.6/ui-bootstrap.min.js"></script>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Angular Material Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.24/angular-material.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.8.0/angular-messages.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.8.0/angular-messages.min.js.map"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-route/1.8.2/angular-route.min.js"></script>
+
+
+
+    <script src="./Directives/Profile-edit-section/profile-section.directive.js"></script>
+    <script src="./Directives/Profile-edit-section/profile-section-directive.controller.js"></script>
+    <script src="./Directives/Model-directive/model-directive.controller.js"></script>
+
+    <script src="./Services/userData.service.js"></script>
+
+    <script src="./Modules/Home/home.controller.js"></script>
+    <script src="./Modules/Account/account.controller.js"></script>
+    <script src="./Modules/Account/Login/login.controller.js"></script>
+    <script src="./Modules/Account/Profile/profile.controller.js"></script>
+    <script src="./Modules/Account/Signup/signup.controller.js"></script>
+    <script src="./Modules/Todo/todo.controller.js"></script>
+    <script src="./Modules/Main/main.controller.js"></script>
+    <link rel="stylesheet" href="./Assets/app.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet"
+        href=" https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.6/ui-bootstrap-csp.min.css">
+
+
+
+    <title>Jen-Hao App</title>
+</head>
+
+<body ng-controller="AppMainController as vm" ng-cloak class="body-limit">
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Jen-Hao APP</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link " aria-label="Home" href="#">Home</a>
+                    </li>
+                    <li ng-if="vm.UserObjService.getIsLogin()" class="nav-item">
+                        <a class="nav-link " aria-label="View Content" href="#!todo">Member only</a>
+                    </li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item dropdown  navbar-right">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+
+                            <span class="material-icons">account_circle</span>
+
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <!-- Login status Items -->
+                            <li ng-if="vm.UserObjService.getIsLogin()"><a class="dropdown-item" href="#!account/profile"
+                                    aria-label="Profile">Profile</a></li>
+                            <li ng-if="vm.UserObjService.getIsLogin()">
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li ng-if="vm.UserObjService.getIsLogin()"><a class="dropdown-item"
+                                    ng-click="vm.logout()">Logout</a></li>
+                            <!-- Login status Items end-->
+
+                            <!-- LogOut status Items -->
+                            <li ng-if="!vm.UserObjService.getIsLogin()"><a class="dropdown-item" href="#!account/signup"
+                                    aria-label="Signup">Signup</a></li>
+                            <li ng-if="!vm.UserObjService.getIsLogin()">
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li ng-if="!vm.UserObjService.getIsLogin()"><a class="dropdown-item" href="#!account/login"
+                                    aria-label="Login">Login</a></li>
+                            <!-- LogOut status Items end-->
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <ng-view></ng-view>
+    </div>
+
+</body>
+
+</html>
