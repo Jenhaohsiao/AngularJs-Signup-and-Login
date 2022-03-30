@@ -7,8 +7,9 @@ This is a simple demonstration for using AngularJs to build a sign up and login 
 All libraries are using CDN link, there is no installation needed.
 
 ## How to use
-Access the page from this link
+Access the page from those links
 ```
+https://chic-pegasus-78200c.netlify.app/#!/
 https://jenhaohsiao.github.io/AngularJs-Signup-and-Login/#!/
 ```
 Testing username and password
